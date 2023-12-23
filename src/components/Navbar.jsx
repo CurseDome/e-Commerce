@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  // this is cart data which is called on click
+  const data = useSelector((state) => state.cartData);
   return (
     <div className="flex justify-between bg-slate-700 p-3 text-white">
       <div>logo</div>
@@ -30,7 +34,12 @@ function Navbar() {
             <NavLink to="/customer_service">Coustmer service</NavLink>
           </li>
           <li>
-            <NavLink to="/cart">Cart</NavLink>
+            <NavLink to="/cart">
+              <ShoppingCartIcon fontSize="large" />
+            </NavLink>
+            <span className="bg-white rounded-full text-black px-2">
+              {data.length}
+            </span>
           </li>
         </ul>
       </div>
